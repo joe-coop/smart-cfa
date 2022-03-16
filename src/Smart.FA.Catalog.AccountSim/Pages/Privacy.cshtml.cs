@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AccountSimulation.Pages;
+namespace Smart.FA.Catalog.AccountSimulation.Pages;
 
 public class PrivacyModel : PageModel
 {

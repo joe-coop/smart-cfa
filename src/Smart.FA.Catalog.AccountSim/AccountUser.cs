@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace AccountSimulation;
+namespace Smart.FA.Catalog.AccountSimulation;
 
 public static class AccountUsers
 {

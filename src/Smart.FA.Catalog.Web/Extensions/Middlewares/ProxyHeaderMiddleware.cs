@@ -23,7 +23,7 @@ public class ProxyHeaderMiddleware
         _next = next;
     }
 
-    public async Task InvokeAsync(HttpContext context, IMediator mediator )
+    public async Task InvokeAsync(HttpContext context, IMediator mediator, ILogger<ProxyHeaderMiddleware> logger )
     {
         //Default values are used to substitute to the Nginx authentication system
         //TODO: When the nginx authentication system is in place in every environment, remove default values
@@ -41,6 +41,7 @@ public class ProxyHeaderMiddleware
 
         CultureInfo.CurrentUICulture = new CultureInfo(response.Trainer!.DefaultLanguage.Value);
         context.User = new GenericPrincipal(new CustomIdentity(response.Trainer!), null );
+        logger.LogInformation($"Setting user: {(context.User.Identity as CustomIdentity)}");
         await _next(context);
     }
 }

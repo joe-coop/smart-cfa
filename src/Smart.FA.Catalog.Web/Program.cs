@@ -37,7 +37,7 @@ builder.Services
     {
         options.ResourcesPath = "Resources";
     });
-
+builder.Services.AddDataProtection();
 builder.WebHost.UseWebRoot("wwwroot");
 builder.WebHost.UseStaticWebAssets();
 
@@ -59,6 +59,8 @@ var app = builder.Build();
 
 // We don't await this operation now but it will awaited just before app.Run()
 var seedingTask = app.Services.GetRequiredService<IBootStrapService>().ApplyMigrationsAndSeedAsync();
+
+app.UseHttpLogging();
 
 app.UseForwardedHeaders();
 

@@ -20,8 +20,8 @@ public class IndexModel : PageModel
     {
         ViewData[nameof(SideMenuItem)] = SideMenuItem.MyTrainings;
         Identity = HttpContext.User.Identity as CustomIdentity;
-        // if (!User.Identity!.IsAuthenticated)
-        //     return RedirectToPage("Admin/Account/Index");
+        _logger.LogInformation($"Getting user: {HttpContext.User.Identity as CustomIdentity}");
+
         return Page();
     }
 }

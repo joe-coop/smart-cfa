@@ -1,14 +1,24 @@
-using AccountSimulation.Options;
+using Microsoft.AspNetCore.HttpLogging;
 using Smart.Design.Razor.Extensions;
+using Smart.FA.Catalog.AccountSimulation.Options;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.ConfigureLogging(logBuilder =>
+{
+    logBuilder.ClearProviders(); // removes all providers from LoggerFactory
+    logBuilder.AddConsole();
+    logBuilder.AddTraceSource("Information, ActivityTracing"); // Add Trace listener provider
+});
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddHttpClient();
 builder.Services.AddSmartDesign();
+builder.Services.AddDataProtection();
+
 builder.Services.Configure<ProxyPass>(builder.Configuration.GetSection("ProxyPass"));
     var app = builder.Build();
+app.UseHttpLogging();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -17,7 +27,6 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
 
 
 // app.UseHttpsRedirection();

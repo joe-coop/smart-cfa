@@ -1,5 +1,6 @@
 ﻿@page
 @using Microsoft.AspNetCore.Mvc.ApplicationModels
+@using Smart.FA.Catalog.AccountSimulation
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -10,7 +11,7 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
    @using (Html.BeginForm())
    {
-       @Html.DropDownListFor(x => x.SelectedUser, AccountUsers.List)
-       <button type="submit" asp-page-handler="Redirect" asp-route-id="@Model.SelectedUser">OK</button>
+       <select asp-for="SelectedUser" asp-items="AccountUsers.List"></select>
+       <button type="submit" asp-page-handler="Redirect">OK</button>
    }
 </div>

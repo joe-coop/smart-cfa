@@ -14,7 +14,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:7091;http://localhost:5091",
+      "applicationUrl": "https://localhost:7091;http://localhost:5000",
       "dotnetRunMessages": true
     },
     "IIS Express": {
@@ -33,7 +33,7 @@
         "ASPNETCORE_HTTPS_PORT": "44360"
       },
       "sslPort": 44360,
-      "httpPort": 51803,
+      "httpPort": 5000,
       "useSSL": true
     },
     "WSL": {
@@ -42,7 +42,7 @@
       "launchUrl": "https://localhost:7091",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_URLS": "https://localhost:7091;http://localhost:5091"
+        "ASPNETCORE_URLS": "https://localhost:7091;http://localhost:5000"
       },
       "distributionName": ""
     }

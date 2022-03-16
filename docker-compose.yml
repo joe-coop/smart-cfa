@@ -5,25 +5,49 @@ services:
     build:
       context: .
       dockerfile: DB.Dockerfile
-    hostname: "datasource_${DOCKER_NAME}"
+    ports:
+    - "1433:1433"
+    hostname: cfa-datasource
     restart: always
     networks:
-      - "cfa"
+      cfa:
+        ipv4_address: 172.22.1.3
   api:
     depends_on:
       - datasource
     build:
       context: .
       dockerfile: Web.Dockerfile
-    hostname: api_${DOCKER_NAME}
+    ports:
+      - "5000:80"
+    hostname: cfa-api
     restart: always
     networks:
-      - "cfa"
+      cfa:
+        ipv4_address: 172.22.1.2
+  front:
+    build:
+      context: .
+      dockerfile: AccountSim.Dockerfile
+    ports:
+      - "5001:80"
+    hostname: account-sim
+    networks:
+      cfa:
+        ipv4_address: 172.22.1.4
+  proxy:
+    build:
+      context: .
+      dockerfile: Nginx.Dockerfile
+    ports:
+      - "5002:80"
+    networks:
+      cfa:
+        ipv4_address: 172.22.1.5
 networks:
   cfa:
-    name: cfa
     ipam:
       driver: default
       config:
-        - subnet: 172.21.1.0/24
-          gateway: 172.21.1.1
+        - subnet: 172.22.1.0/24
+          gateway: 172.22.1.1
