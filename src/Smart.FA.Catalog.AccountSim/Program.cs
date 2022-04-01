@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.HttpLogging;
 using Smart.Design.Razor.Extensions;
+using Smart.FA.Catalog.AccountSimulation;
 using Smart.FA.Catalog.AccountSimulation.Options;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +29,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-
+app.UseProxyHeaders();
 // app.UseHttpsRedirection();
 app.UseStaticFiles();
 

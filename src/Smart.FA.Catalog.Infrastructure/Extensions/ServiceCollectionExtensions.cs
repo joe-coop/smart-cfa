@@ -14,9 +14,12 @@ namespace Smart.FA.Catalog.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static void AddInfrastructure(this IServiceCollection services, string trainingConnectionString,
+    public static void AddInfrastructure(
+        this IServiceCollection services,
+        string trainingConnectionString,
         string userAccountConnectionString,
-        bool useConsoleLogger, IConfigurationSection mailOptionSection)
+        bool useConsoleLogger,
+        IConfigurationSection mailOptionSection)
     {
         services.AddContext(trainingConnectionString, useConsoleLogger)
             .AddEventDispatcher()

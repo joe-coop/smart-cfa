@@ -25,18 +25,14 @@ builder.Services
         .GetSection("AdminOptions"));
 builder.Services
     .AddSmartDesign();
-builder.Services
-    .AddRazorPages()
+builder.Services.AddRazorPages(options => { options.Conventions.AuthorizeFolder("/Admin"); })
     .AddFluentValidation(configuration =>
     {
         configuration.RegisterValidatorsFromAssemblyContaining<Program>();
         configuration.RegisterValidatorsFromAssemblyContaining<ResponseBase>();
         configuration.DisableDataAnnotationsValidation = true;
     })
-    .AddViewLocalization(options =>
-    {
-        options.ResourcesPath = "Resources";
-    });
+    .AddViewLocalization(options => { options.ResourcesPath = "Resources"; });
 builder.Services.AddDataProtection();
 builder.WebHost.UseWebRoot("wwwroot");
 builder.WebHost.UseStaticWebAssets();
@@ -45,7 +41,7 @@ builder.WebHost.UseStaticWebAssets();
 builder.Services
     .AddInfrastructure(builder.Configuration.GetConnectionString("Catalog"),
         builder.Configuration.GetConnectionString("Account"),
-        true,
+        false,
         builder.Configuration.GetSection("MailOptions"));
 #else
 builder.Services

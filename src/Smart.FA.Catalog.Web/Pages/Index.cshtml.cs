@@ -18,9 +18,9 @@ public class IndexModel : PageModel
 
     public IActionResult OnGet()
     {
+        _logger.LogInformation($"Getting user: {HttpContext.User.Identity as CustomIdentity}");
         ViewData[nameof(SideMenuItem)] = SideMenuItem.MyTrainings;
         Identity = HttpContext.User.Identity as CustomIdentity;
-        _logger.LogInformation($"Getting user: {HttpContext.User.Identity as CustomIdentity}");
 
         return Page();
     }

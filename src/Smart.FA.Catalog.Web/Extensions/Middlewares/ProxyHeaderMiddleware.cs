@@ -26,10 +26,13 @@ public class ProxyHeaderMiddleware
     public async Task InvokeAsync(HttpContext context, IMediator mediator, ILogger<ProxyHeaderMiddleware> logger )
     {
         //Default values are used to substitute to the Nginx authentication system
+        logger.LogInformation("header>< userId: {User} appname: {AppName}",context.Request.Headers["user_id"].ToString(), context.Request.Headers["app_name"].ToString());
         //TODO: When the nginx authentication system is in place in every environment, remove default values
         var userId = (string.IsNullOrEmpty(context.Request.Headers["user_id"].ToString())  ? "1" : context.Request.Headers["user_id"].ToString())!;
         var appName =  string.IsNullOrEmpty(context.Request.Headers["app_name"].ToString()) ? ApplicationType.Account.Name : context.Request.Headers["app_name"].ToString();
+
         var applicationType = Enumeration.FromDisplayName<ApplicationType>(appName);
+        logger.LogInformation("parsed header>< userId: {User} appname: {AppName}",userId, appName);
 
         var response = await mediator.Send(new GetTrainerFromUserAppRequest {UserId = userId, ApplicationType = applicationType});
 

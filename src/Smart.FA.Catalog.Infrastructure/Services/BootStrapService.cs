@@ -97,7 +97,13 @@ public class BootStrapService : IBootStrapService
             "Developer",
             "Hello I am Victor van Duynen",
             Language.Create("FR").Value);
+        var trainer2 = new Trainer(Name.Create("Maxime", "Poulain").Value,
+            TrainerIdentity.Create("2", ApplicationType.Default).Value,
+            "Developer",
+            "Hello I am Maxime Poulain",
+            Language.Create("FR").Value);
         catalogContext.Trainers.Add(trainer);
+        catalogContext.Trainers.Add(trainer2);
         return catalogContext.SaveChangesAsync();
     }
 }
