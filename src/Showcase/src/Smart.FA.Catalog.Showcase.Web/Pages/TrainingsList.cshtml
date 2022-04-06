@@ -1,0 +1,52 @@
+﻿@page
+@model Smart.FA.Catalog.Showcase.Web.Pages.TrainingsListModel
+@{
+}
+<section class="main__presentation">
+    <div class="main-title">Formations</div>
+    <div class="main-subtitle">Liste des formations</div>
+    <div class="main__presentation-txt">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in ullamcorper tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis eget varius nisl, et eleifend est. In condimentum, arcu eget ornare aliquam,
+        urna quam luctus quam, ut vestibulum nulla turpis ultricies lectus. Nunc gravida gravida feugiat. Quisque pellentesque libero in massa fringilla, vel gravida ex ultricies. Proin in mi dolor. Fusce mollis neque tellus, vel malesuada nibh malesuada
+        vitae. Curabitur sed ultrices nulla. Donec vulputate quis lorem ut ultricies. Nulla vestibulum suscipit aliquet. Aliquam dictum justo posuere, iaculis orci quis, viverra enim. Vivamus nec leo et est hendrerit tempus. Aliquam viverra dapibus elit.
+        Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sit amet aliquet ligula, id consequat lectus.
+    </div>
+</section>
+<section class="section__training-search">
+    @*TO DO: include search bar*@
+    @*TO DO: include training search filters*@
+</section>
+
+<section class="section__training-list">
+    @*TO DO: create ViewComponent for the trainings list items*@
+    @* start loop on 10 trainings randomly selected *@
+    <div class="training-list">
+        <div class="training-list__container">
+            <div class="training-list__container-left">
+                <div class="training-list__title">
+                    <a class="training-list__training-link" asp-page="TrainingDetail" asp-route-id="1">Pratiquer une communication bienveillante en milieu hospitalier</a>
+                </div>
+                <div class="training-list__trainer">
+                    <!-- Formateur ayant encodé la formation -->
+                    Césarine Lecerf
+                </div>
+                <div class="training-list__sectors ">
+                    <img src="./icons/tag--blue.svg" class="o-svg-icon--small sectors-icon" />
+                    <!-- Boucle sur les secteurs/categories/matières rattachés à la formation -->
+                    <a href="formations.php?cat=category" class="training-list__category-link">Communication</a>, <a href="formations.php?cat=category" class="training-list__category-link">Soin aux personnes</a>
+                </div>
+            </div>
+            <div class="training-list__container-right">
+                <div class="training-list__more">
+                    <!-- Lien vers la fiche de la formation -->
+                    <a href="nom-de-la-formation.php" class="training-list__more-link"><img src="./icons/chevron-right--blue.svg" class="o-svg-icon--large chevron-icon" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*end loop*@
+
+    @*TO DO: determine how pagination works, where do the parameters come from etc.*@
+    @await Html.PartialAsync("./Partial/_Pager")
+</section>
+
