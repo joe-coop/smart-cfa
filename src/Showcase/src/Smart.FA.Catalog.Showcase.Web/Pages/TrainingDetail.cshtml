@@ -2,3 +2,65 @@
 @model Smart.FA.Catalog.Showcase.Web.Pages.TrainingDetailModel
 @{
 }
+
+<section class="training-card">
+    <div class="training-card__title">
+        Pratiquer une communication bienveillante en milieu hospitalier
+    </div>
+    <div class="training-card__sectors">
+        <img src="./icons/tag--blue.svg" class="o-svg-icon--small sectors-icon" />
+        <!-- Boucle sur les secteurs/categories/matières rattachés à la formation -->
+        @*Start loop*@
+        <a class="training-list__category-link" asp-page="TrainingsList" asp-route-cat="TopicName">TopicName</a>
+            @*If not last item: add ", " after item*@
+        @*End loop*@
+    </div>
+    <div class="training-card__details">
+        <div class="training-card__details-txts">
+            <div class="training-card__details-section">
+                <div class="training-card__details-label">
+                    Présentation
+                </div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in ullamcorper tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis eget varius nisl, et eleifend est. In condimentum, arcu eget ornare aliquam,
+                urna quam luctus quam, ut vestibulum nulla turpis ultricies lectus. Nunc gravida gravida feugiat. Quisque pellentesque libero in massa fringilla, vel gravida ex ultricies. Proin in mi dolor. Fusce mollis neque tellus, vel malesuada nibh
+                malesuada vitae. Curabitur sed ultrices nulla. Donec vulputate quis lorem ut ultricies. Nulla vestibulum suscipit aliquet. Aliquam dictum justo posuere, iaculis orci quis, viverra enim. Vivamus nec leo et est hendrerit tempus. Aliquam
+                viverra dapibus elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sit amet aliquet ligula, id consequat lectus.
+            </div>
+            <div class="training-card__details-section">
+                <div class="training-card__details-label">
+                    Objectifs
+                </div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in ullamcorper tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis eget varius nisl, et eleifend est. In condimentum, arcu eget ornare aliquam,
+                urna quam luctus quam, ut vestibulum nulla turpis ultricies lectus. Nunc gravida gravida feugiat. Quisque pellentesque libero in massa fringilla, vel gravida ex ultricies. Proin in mi dolor. Fusce mollis neque tellus, vel malesuada nibh
+                malesuada vitae. Curabitur sed ultrices nulla. Donec vulputate quis lorem ut ultricies. Nulla vestibulum suscipit aliquet. Aliquam dictum justo posuere, iaculis orci quis, viverra enim. Vivamus nec leo et est hendrerit tempus. Aliquam
+                viverra dapibus elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sit amet aliquet ligula, id consequat lectus.
+            </div>
+            <div class="training-card__details-section">
+                <div class="training-card__details-label">
+                    Modalités pratiques
+                </div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in ullamcorper tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis eget varius nisl, et eleifend est. In condimentum, arcu eget ornare aliquam,
+                urna quam luctus quam, ut vestibulum nulla turpis ultricies lectus. Nunc gravida gravida feugiat. Quisque pellentesque libero in massa fringilla, vel gravida ex ultricies. Proin in mi dolor. Fusce mollis neque tellus, vel malesuada nibh
+                malesuada vitae. Curabitur sed ultrices nulla. Donec vulputate quis lorem ut ultricies. Nulla vestibulum suscipit aliquet. Aliquam dictum justo posuere, iaculis orci quis, viverra enim. Vivamus nec leo et est hendrerit tempus. Aliquam
+                viverra dapibus elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sit amet aliquet ligula, id consequat lectus.
+            </div>
+        </div>
+        <div class="training-card__trainer">
+            <div class="training-card__trainer-name">
+                @*TO DETERMINE: How do we want the url to look like when we reach a single trainer page?
+                asp-route- parameter could be different than asp-route-id, e.g. asp-route-fullname="Césarine Lecerf" ?*@
+                <a class="training-card__trainer-link" asp-page="TrainerDetail" asp-route-id="1">Césarine Lecerf@*Trainer name*@</a>
+            </div>
+            <div class="training-card__trainer-fonction">
+                Formatrice@*Trainer title*@
+            </div>
+        </div>
+    </div>
+    <div class="training-card__footer">
+        <div class="training-card__back">
+            <a class="training-card__back-link" asp-page="TrainingsList">
+                <img src="./icons/chevron-left--blue.svg" class="o-svg-icon--small chevron-icon" />Toutes les formations
+            </a>
+        </div>
+    </div>
+</section>
