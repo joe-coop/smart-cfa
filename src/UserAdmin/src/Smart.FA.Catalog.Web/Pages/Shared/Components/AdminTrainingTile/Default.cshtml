@@ -10,7 +10,7 @@
         <smart-card-title text="@Model!.Title"></smart-card-title>
         @foreach (var tag in Model!.TopicIds ?? new List<int>())
         {
-            <smart-muted-text text="@string.Join(", ", _localizer[Enumeration.FromValue<TrainingTopic>(tag).Name])"></smart-muted-text>
+            <smart-muted-text text="@_localizer[Enumeration.FromValue<TrainingTopic>(tag).Name]"></smart-muted-text>
         }
     </smart-card-body>
     <smart-card-actions>
