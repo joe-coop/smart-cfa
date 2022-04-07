@@ -12,6 +12,7 @@
         Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sit amet aliquet ligula, id consequat lectus.
     </div>
 </section>
+
 <section class="section__training-search">
     @*TO DO: include search bar*@
     @*TO DO: include training search filters*@
@@ -30,16 +31,19 @@
                     <!-- Formateur ayant encodé la formation -->
                     Césarine Lecerf
                 </div>
-                <div class="training-list__sectors ">
+                <div class="training-list__sectors">
                     <img src="./icons/tag--blue.svg" class="o-svg-icon--small sectors-icon" />
                     <!-- Boucle sur les secteurs/categories/matières rattachés à la formation -->
-                    <a href="formations.php?cat=category" class="training-list__category-link">Communication</a>, <a href="formations.php?cat=category" class="training-list__category-link">Soin aux personnes</a>
+                    @*Start loop*@
+                    <a class="training-list__category-link" asp-page="TrainingsList" asp-route-cat="TopicName">TopicName</a>
+                        @*If not last item: add ", " after item*@
+                    @*End loop*@
                 </div>
             </div>
             <div class="training-list__container-right">
                 <div class="training-list__more">
                     <!-- Lien vers la fiche de la formation -->
-                    <a href="nom-de-la-formation.php" class="training-list__more-link"><img src="./icons/chevron-right--blue.svg" class="o-svg-icon--large chevron-icon" /></a>
+                    <a class="training-list__more-link" asp-page="TrainingDetail" asp-route-id="1"><img src="./icons/chevron-right--blue.svg" class="o-svg-icon--large chevron-icon" /></a>
                 </div>
             </div>
         </div>
@@ -49,4 +53,3 @@
     @*TO DO: determine how pagination works, where do the parameters come from etc.*@
     @await Html.PartialAsync("./Partial/_Pager")
 </section>
-
